@@ -1,0 +1,28 @@
+<div>
+  <input type="file"
+         (change)="addFile($event)"
+         placeholder="Upload file"
+         accept=".csv, appleofficedocument.spreadsheetml.sheet, application/vnd.ms-excel, .xlsx">
+</div>
+
+<div *ngIf="rawData">
+  
+  <button type="button" (click)="showRawData()">Show Raw Data</button>
+  <h1>Datos Crudos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+      </tr> 
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitd of data">
+        <td *ngFor="let header of headers">
+          {{ solicitd[header] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

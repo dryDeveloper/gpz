@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material/material.module';
+import { ImportDataComponent } from './import-data/import-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ImportDataComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,6 @@ import { MaterialModule } from './material/material.module';
     MaterialModule
   ],
   providers: [],
-  bootstrap: [MainMenuComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
