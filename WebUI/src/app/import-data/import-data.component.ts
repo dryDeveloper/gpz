@@ -11,12 +11,14 @@ export class ImportDataComponent implements OnInit {
 
   rawData!: ImportedSolicitudesRawData;
   file!: File;
-  headers?: any[];
-  data?: any[];
+  headers!: any[];
+  data!: any[];
+  public columns: string[] = ['folio', 'modalidad'];
 
   constructor(private sptojsonservice: SpreadsheetToJsonService ) { }
 
   ngOnInit(): void {
+
   }
 
   addFile(event: any) {
