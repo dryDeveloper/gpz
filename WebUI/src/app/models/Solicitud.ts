@@ -1,0 +1,29 @@
+export interface Solicitud {
+  Folio: string;
+  TipoPersona: string;
+  TipoProyecto: string;
+  CP: string;
+  Calle: string;
+  Ciudad: string;
+  Coloia: string;
+  Estado: string;
+  FCaptura: string;
+  Modalidad: string;
+  Municipio: string;
+  NoExterior: string;
+  NoInterior: string;
+  NombreCompleto: string;
+  NumeroAsignado: string;
+  RFC: string;
+  RefNom1: string;
+  RefNom2: string;
+  RefNom3: string;
+  TTramite: string;
+  Telefono: string;
+  TelefonoNom20: string;
+  Urgente: string;
+  fechaAsignacion: string;
+  fechaVigencia: string;
+  refTel: string;
+  refTel2: string;
+}
