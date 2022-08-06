@@ -26,4 +26,10 @@ export interface Solicitud {
   fechaVigencia: string;
   refTel: string;
   refTel2: string;
+  refTel3: string;
+  fechaContestado: string;
+  TelefonoRep: string;
+  RepPaterno: string;
+  obsFV: string;
+  obsTelcel: string;
 }

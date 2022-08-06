@@ -16,7 +16,7 @@ export class ImportDataComponent implements OnInit {
   isTableVisible = false;
   // public columns: string[] = ['folio', 'modalidad'];
 
-  constructor(private sptojsonservice: SpreadsheetToJsonService ) { }
+  constructor(private sptojsonservice: SpreadsheetToJsonService) { }
 
   ngOnInit(): void {
     this.rawData = undefined;
