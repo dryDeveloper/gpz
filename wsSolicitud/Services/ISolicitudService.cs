@@ -4,8 +4,8 @@ namespace wsSolicitud.Services {
 
   public interface ISolicitudService {
 
-    public List<Solicitud> GetRange(string startDate, string endDate);
-    public void Add();
+    public Task<IEnumerable<Solicitud>> GetByDay(string dayOfCapture);
+    public void BulkInsert(SolicitudRequest solicitudRequest);
       
   }
     

@@ -1,30 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using wsSolicitud.Models;
+using System.Data;
+using MySql.Data.MySqlClient;
 
-public class SolicitudContext : DbContext {
+public class SolicitudContext {
 
   private readonly IConfiguration config;
-  
-  public DbSet<Solicitud> Solicitud { get; set; }
+  private readonly string connectionString;
 
-  public SolicitudContext(IConfiguration config, DbContextOptions<SolicitudContext> options) :
-    base (options) {
+  public SolicitudContext(IConfiguration config) {
     this.config = config;
+    this.connectionString = this.config.GetConnectionString("MySql");
   }
 
-  protected override void OnConfiguring(DbContextOptionsBuilder options) {
-    if (!options.IsConfigured)
-      options.UseMySql(
-          config.GetConnectionString("MySql"),
-          Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.8.3-mariadb")
-      );
-  }
+  public IDbConnection CreateConnection() => new MySqlConnection(connectionString);
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder) {
-    modelBuilder.Entity<Solicitud>().ToTable("Solicitud");
-  }
 
 }
 

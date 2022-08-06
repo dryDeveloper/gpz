@@ -11,7 +11,7 @@ namespace wsSolicitud.Models {
     public string CP { get; set; } = "";
     public string Calle { get; set; } = "";
     public string Ciudad { get; set; } = "";
-    public string Coloia { get; set; } = "";
+    public string Colonia { get; set; } = "";
     public string Estado { get; set; } = "";
     public string FCaptura { get; set; } = "";
     public string Modalidad { get; set; } = "";
@@ -32,7 +32,12 @@ namespace wsSolicitud.Models {
     public string fechaVigencia { get; set; } = "";
     public string refTel { get; set; } = "";
     public string refTel2 { get; set; } = "";
-
+    public string refTel3 { get; set; } = "";
+    public string fechaContestado { get; set; } = "";
+    public string TelefonoRep { get; set; } = "";
+    public string RepPaterno { get; set; } = "";
+    public string obsFV { get; set; } = "";
+    public string obsTelcel { get; set; } = "";
   }
 
 }

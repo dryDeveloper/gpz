@@ -1,17 +1,15 @@
-using Pomelo.EntityFrameworkCore.MySql;
+using wsSolicitud.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddSingleton<SolicitudContext>();
+builder.Services.AddScoped<ISolicitudService, SolicitudService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<SolicitudContext>();
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
@@ -22,12 +20,6 @@ if (app.Environment.IsDevelopment()) {
 } else {
   app.UseDeveloperExceptionPage();
   app.UseMigrationsEndPoint();
-}
-
-using (var scope = app.Services.CreateScope()) {
-  var services = scope.ServiceProvider;
-  var context = services.GetRequiredService<SolicitudContext>();
-  context.Database.EnsureCreated();
 }
 
 app.UseHttpsRedirection();
