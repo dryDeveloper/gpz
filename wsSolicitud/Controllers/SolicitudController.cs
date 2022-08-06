@@ -36,6 +36,19 @@ namespace wsSolicitud.Controllers {
     }
 
 
+    [HttpPost]
+    public IActionResult AddSolicitudes(SolicitudRequest request) {
+      try {
+        solicitudService.Add(request.Solicitudes.ToArray());
+      } catch (Exception ex) {
+        response.Message = ex.Message;
+        response.Success = 0;
+        return BadRequest(response);
+      }
+      return Ok(response);
+    }
+
+
 
 
   }
