@@ -11,6 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(opts => {
+    opts.AddPolicy(
+        name: "GPZ",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+        );
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,5 +36,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors("GPZ");
 
 app.Run();
