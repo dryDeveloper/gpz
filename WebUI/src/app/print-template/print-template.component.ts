@@ -14,12 +14,16 @@ export class PrintTemplateComponent implements OnInit {
   constructor(private solicitudService: SolicitudesService) { }
 
   ngOnInit(): void {
+
+  }
+
+  generateTemplate(): void {
     this.getSolicitudes("19-02-2022");
   }
 
   getSolicitudes(day: string) {
     this.solicitudService.getSolicitudes(day).subscribe(response => {
-      this.solicitudes = response.data;
+      this.solicitudes = response.data as Solicitud[];
       console.log(this.solicitudes);
     });
   }
