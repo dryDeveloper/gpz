@@ -10,6 +10,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material/material.module';
 import { ImportDataComponent } from './import-data/import-data.component';
 import { PrintTemplateComponent } from './print-template/print-template.component';
+import { SolicitudModule } from './solicitud/solicitud.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PrintTemplateComponent } from './print-template/print-template.componen
     BrowserAnimationsModule,
     LayoutModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    SolicitudModule
   ],
   providers: [],
   bootstrap: [AppComponent]

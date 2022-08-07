@@ -2,7 +2,7 @@ export interface Solicitud {
   folio: string;
   tipoPersona: string;
   tipoProyecto: string;
-  cP: string;
+  cp: string;
   calle: string;
   ciudad: string;
   coloia: string;
@@ -14,7 +14,7 @@ export interface Solicitud {
   noInterior: string;
   nombreCompleto: string;
   numeroAsignado: string;
-  rFC: string;
+  rfc: string;
   refNom1: string;
   refNom2: string;
   refNom3: string;

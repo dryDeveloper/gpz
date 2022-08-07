@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Solicitud } from 'src/app/models/Solicitud';
 
 @Component({
   selector: 'app-solicitud-list',
@@ -6,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./solicitud-list.component.css']
 })
 export class SolicitudListComponent implements OnInit {
+
+  @Input() public solicitudes: Solicitud[] = [];
+
+  public columns = [
+    "folio",
+    "tipoPersona",
+    "tipoProyecto",
+    "fCaptura",
+    "modalidad",
+    "nombreCompleto",
+    "rfc",
+    "tTramite"
+  ];
 
   constructor() { }
 

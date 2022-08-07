@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { SolicitudListComponent } from './solicitud-list/solicitud-list.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -11,7 +12,12 @@ import { SolicitudListComponent } from './solicitud-list/solicitud-list.componen
     SolicitudListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
+  ],
+  exports: [
+    SolicitudComponent,
+    SolicitudListComponent
   ]
 })
 export class SolicitudModule { }
