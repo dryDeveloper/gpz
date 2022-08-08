@@ -18,14 +18,18 @@ export class SolicitudComponent implements OnInit {
     return fullName.split(" ");
   }
 
-  getAge(rfc: string): string {
+  getAge(rfc: string): number {
     const regex = /[0-9]/g;
     const rfcNumbers = rfc.match(regex);
-    const year = rfcNumbers![0] + rfcNumbers![1];
-    if (parseInt(year) < 22)
-      console.log(year);
+    let rfcYear = parseInt(rfcNumbers![0] + rfcNumbers![1]);
+    let currentYear = parseInt(new Date().getFullYear().toString().slice(-2));
+    
+    if (rfcYear > currentYear) rfcYear = rfcYear + 1900; 
+    else rfcYear = rfcYear + 2000;
 
-    return year;
+    currentYear = new Date().getFullYear();
+
+    return currentYear - rfcYear;
   }
 
 }

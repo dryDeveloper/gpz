@@ -31,7 +31,7 @@ export class PrintTemplateComponent implements OnInit {
   printSolicitudes() {
     var printwin = window.open("");
     printwin!.document.write(document.getElementById("printTarget")!.innerHTML);
-    // printwin?.print();
+    printwin?.print();
   }
 
 }
