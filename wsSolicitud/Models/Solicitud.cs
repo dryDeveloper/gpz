@@ -13,6 +13,7 @@ namespace wsSolicitud.Models {
     public string Ciudad { get; set; } = "";
     public string Colonia { get; set; } = "";
     public string Estado { get; set; } = "";
+    public string Entrecalle { get; set; } = "";
     public string FCaptura { get; set; } = "";
     public string Modalidad { get; set; } = "";
     public string Municipio { get; set; } = "";

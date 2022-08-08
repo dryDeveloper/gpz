@@ -45,6 +45,13 @@
           {{ splitName(solicitud.nombreCompleto)[0] }}
         </div>
       </div>
+      <div>
+        <div>R.F.C.:</div>
+        <div>{{ solicitud.rfc }}</div>
+      </div>
+      <div>Nombre de la referencia 1:</div>
+      <div>Nombre de la referencia 2:</div>
+      <div>Nombre de la referencia 3:</div>
     </div>
     <div class="col">
       <div>
@@ -53,8 +60,71 @@
           {{ splitName(solicitud.nombreCompleto)[1] }}
         </div>
       </div>
-      <div>Edad:</div>
-      <div>{{ getAge(solicitud.rfc) }}</div>
+      <div>
+        <div>Edad:</div>
+        <div>{{ getAge(solicitud.rfc) }}</div>
+      </div>
+      <div>{{ solicitud.refNom1 }}</div>
+      <div>{{ solicitud.refNom2 }}</div>
+      <div>{{ solicitud.refNom3 }}</div>
+    </div>
+    <div class="col">
+      <div>
+        <div>Nombre(s)</div>
+        <div *ngIf="splitName(solicitud.nombreCompleto).length > 2">
+          {{ splitName(solicitud.nombreCompleto)[2] }}
+          <span *ngIf="splitName(solicitud.nombreCompleto).length > 3">
+            &nbsp;{{ splitName(solicitud.nombreCompleto)[3] }}
+          </span>
+        </div>
+      </div>
+      <div>
+        <div>Telefono Oficina:</div>
+        <div>{{ solicitud.telefonoNom20 }}</div>
+      </div>
+      <div>Telefono Referencia 1:</div>
+      <div>Telefono Referencia 2:</div>
+      <div>Telefono Referencia 3:</div>
+    </div>
+    <div class="col">
+      <div>
+        <div>Telefono:</div>
+        <div>{{ solicitud.telefono }}</div>
+      </div>
+      <div>
+        <div>Ext:</div>
+        <div *ngIf="solicitud.telefonoRep; else elseBlock">
+          <br/>
+        </div>
+        <ng-template #elseBlock>
+          {{ solicitud.telefonoRep }}
+        </ng-template>
+      </div>
+      <div>{{ solicitud.refTel }}</div>
+      <div>{{ solicitud.refTel2 }}</div>
+      <div>{{ solicitud.refTel3 }}</div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="container border border-primary rounder-3">
+  <div class="text-center fs-5">DOMICILIO CLIENTE</div>
+  <div class="row">
+    <div class="col">
+      <div>
+        <div>Calle:</div>
+        <div>{{ solicitud.calle }}</div>
+      </div>
+      <div>
+        <div>Codigo Postal:</div>
+        <div>{{ solicitud.cp }}</div>
+      </div>
+      <div>
+        <div>ENTRE CALLES:</div>
+        <div>{{ solicitud.entrecalle }}</div>
+      </div>
     </div>
     <div class="col"></div>
     <div class="col"></div>

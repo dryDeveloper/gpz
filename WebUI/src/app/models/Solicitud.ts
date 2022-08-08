@@ -7,6 +7,7 @@ export interface Solicitud {
   ciudad: string;
   coloia: string;
   estado: string;
+  entrecalle: string;
   fCaptura: string;
   modalidad: string;
   municipio: string;
