@@ -5,7 +5,7 @@ export interface Solicitud {
   cp: string;
   calle: string;
   ciudad: string;
-  coloia: string;
+  colonia: string;
   estado: string;
   entrecalle: string;
   fCaptura: string;

@@ -1,16 +1,17 @@
-<div class="container">
+<div class="container" style="font-size: 0.75rem;">
   <div class="row">
     <div class="col">
-      <img src="" alt="telcel logo">
-      <h2>TELCEL</h2>
+      <img src="../../../assets/2560px-Telcel_logo.svg.png" 
+           alt="telcel logo"
+           style="width: 180px;">
     </div>
     <div class="col">
-      <div class="fs-4">FORMATO DE VERIFICACION AGENCIA EXTERNA</div>
+      <div class="text-center fs-6">FORMATO VERIFICACION AGENCIA EXTERNA</div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="font-size: 0.75rem;">
   <div class="row">
     <div class="col">
       <div>Msidn: {{ solicitud.numeroAsignado }}</div>
@@ -33,10 +34,10 @@
   </div>
 </div>
 
-<br>
+<!-- <div>&nbsp;</div> -->
 
-<div class="container border border-primary rounded-3">
-  <div class="text-center fs-5">DATOS DEL CLIENTE</div>
+<div class="container border border-primary rounded-3" style="font-size: 0.75rem;">
+  <div class="text-center fs-6">DATOS DEL CLIENTE</div>
   <div class="row">
     <div class="col">
       <div>
@@ -49,9 +50,6 @@
         <div>R.F.C.:</div>
         <div>{{ solicitud.rfc }}</div>
       </div>
-      <div>Nombre de la referencia 1:</div>
-      <div>Nombre de la referencia 2:</div>
-      <div>Nombre de la referencia 3:</div>
     </div>
     <div class="col">
       <div>
@@ -64,9 +62,6 @@
         <div>Edad:</div>
         <div>{{ getAge(solicitud.rfc) }}</div>
       </div>
-      <div>{{ solicitud.refNom1 }}</div>
-      <div>{{ solicitud.refNom2 }}</div>
-      <div>{{ solicitud.refNom3 }}</div>
     </div>
     <div class="col">
       <div>
@@ -82,9 +77,6 @@
         <div>Telefono Oficina:</div>
         <div>{{ solicitud.telefonoNom20 }}</div>
       </div>
-      <div>Telefono Referencia 1:</div>
-      <div>Telefono Referencia 2:</div>
-      <div>Telefono Referencia 3:</div>
     </div>
     <div class="col">
       <div>
@@ -100,17 +92,26 @@
           {{ solicitud.telefonoRep }}
         </ng-template>
       </div>
-      <div>{{ solicitud.refTel }}</div>
-      <div>{{ solicitud.refTel2 }}</div>
-      <div>{{ solicitud.refTel3 }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div>Nombre ref 1: {{ solicitud.refNom1 }}</div>
+      <div>Nombre ref 2: {{ solicitud.refNom2 }}</div>
+      <div>Nombre ref 3: {{ solicitud.refNom3 }}</div>
+    </div>
+    <div class="col">
+      <div>Telefono Ref 1: {{ solicitud.refTel }}</div>
+      <div>Telefono Ref 2: {{ solicitud.refTel2 }}</div>
+      <div>Telefono Ref 3: {{ solicitud.refTel3 }}</div>
     </div>
   </div>
 </div>
 
-<br/>
+<!-- <div>&nbsp;</div> -->
 
-<div class="container border border-primary rounder-3">
-  <div class="text-center fs-5">DOMICILIO CLIENTE</div>
+<div class="container border border-primary rounded-3" style="font-size: 0.75rem;">
+  <div class="text-center fs-6">DOMICILIO CLIENTE</div>
   <div class="row">
     <div class="col">
       <div>
@@ -126,8 +127,84 @@
         <div>{{ solicitud.entrecalle }}</div>
       </div>
     </div>
-    <div class="col"></div>
-    <div class="col"></div>
+    <div class="col">
+      <div>
+        <div>No. Ext: {{ solicitud.noExterior }}</div>
+        <div>No. Int: <span *ngIf="solicitud.noInterior != '0'">
+          {{ solicitud.noInterior }}
+        </span></div>
+      </div>
+      <div>
+        <div>Alcaldia/Municipio:</div>
+        <div>{{ solicitud.municipio }}</div>
+      </div>
+    </div>
+    <div class="col">
+      <div>
+        <div>Colonia:</div>
+        <div>{{ solicitud.colonia }}</div>
+      </div>
+      <div>
+        <div>Estado:</div>
+        <div>{{ solicitud.estado }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div>&nbsp;</div> -->
+
+<div class="container border border-primary rounded-3" style="font-size: 0.75rem;">
+  <div class="text-center fs-6">RESULTADO DE LA VERIFICACION</div>
+  <div class="row">
+    <div class="col">
+      <div>SE CONFIRMAN DATOS EN DOMICILIO:</div>
+      <div>Observaciones adicionales:</div>
+      <br>
+      <div>TIPO INMUEBLE:</div>
+      <div>COLOR FACHADA:</div>
+      <div>NIVELES DE CONSTRUCCION:</div>
+      <div>TIPO DE PUERTA:</div>
+      <div>COLOR DE PUERTA:</div>
+      <div>Geolocalizacion:</div>
+      <div>USUARIO DE CAPTURA:</div>
+    </div>
+    <div class="col">
+      <div>
+        Persona que atiende la visita
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div>&nbsp;</div> -->
+
+<div class="container border border-primary rounded-3" style="font-size: 0.75rem;">
+  <div class="text-center fs-6">RESULTADO DE TELEFONIA</div>
+  <div class="row">
+    <div class="col">
+      <div>Telefono Particular:</div>
+      <div>Parentesco:</div>
+      <div>Telefono de oficina:</div>
+      <div>Parentesco:</div>
+      <div>OBSERVACIONES TELEFONO OFICINA:</div>
+      <div>&nbsp;</div>
+      <div>Telefono de referencia 1:</div>
+      <div>Parentesco:</div>
+      <div>Telefono de referencia 2:</div>
+      <div>Parentesco:</div>
+      <div>Telefono de referencia 3:</div>
+      <div>Parentesco:</div>
+      <div>&nbsp;</div>
+      <div>Observaciones</div>
+      <div>&nbsp;</div>
+      <div>USUARIO CAPTURA TELEFONIA:</div>
+    </div>
+    <div class="col">
+      <div>Persona que atiende></div>
+      <div>&nbsp;</div>
+      <div>Nombre Confirma:</div>
+    </div>
   </div>
 </div>
 
