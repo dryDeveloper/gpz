@@ -1,11 +1,24 @@
 <div>
 
-  <button type="button" mat-raised-button (click)="fileInput.click()">Seleccionar archivo</button>
+  <button type="button" 
+          mat-raised-button 
+          matTooltip="archivos con extension: XLSX, XLS"
+          (click)="fileInput.click()">Seleccionar archivo</button>
   <input type="file" hidden (change)="addFile($event)" #fileInput id="file">
 
-  <button *ngIf="rawData" mat-mini-fab type="button" (click)="showRawData()">
-    <mat-icon>visibility</mat-icon>
-  </button>
+  <!-- <button *ngIf="rawData" mat-mini-fab type="button" (click)="showRawData()"> -->
+  <!--   <mat-icon>visibility</mat-icon> -->
+  <!-- </button> -->
+  
+  <!-- <button *ngIf="rawData" type="button" mat-mini-fab (click)="importData()"> -->
+  <!--   <mat-icon>upload</mat-icon> -->
+  <!-- </button> -->
+
+  <div *ngIf="loading" class="overlay">
+    <div class="center">
+      <mat-spinner diameter="200" strokeWidth="20"></mat-spinner>
+    </div>
+  </div>
 
 </div>
 

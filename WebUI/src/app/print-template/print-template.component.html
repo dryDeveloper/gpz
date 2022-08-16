@@ -1,28 +1,57 @@
 <h1>Solicitud para impresion</h1>
 
-<button type="button" mat-raised-button (click)="generateTemplate()">Obtener solicitudes</button>
-<button type="button" mat-mini-fab (click)="printSolicitudes()">
+<mat-form-field appearance="fill">
+  <mat-label>Elija una fecha</mat-label>
+  <input matInput [(ngModel)]="dayOfCapture"
+    [matDatepicker]="picker" disabled
+    (dateChange)="generateTemplate()">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<button *ngIf="solicitudes.length > 0" type="button" 
+        matTooltip="recuerde primero seleccionar la pestana 'para impresion'"
+        mat-mini-fab (click)="printSolicitudes()">
   <mat-icon>print</mat-icon>
 </button>
 
+<div *ngIf="solicitudes.length > 0">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Busqueda de solicitud</mat-label>
+    <input id="filter" 
+           type="text" 
+           matInput 
+           placeholder="folio, nombre o rfc" 
+           [(ngModel)]="searchTerm"
+           (keyup)="solicitudFilter()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+
+<div *ngIf="loading" class="overlay">
+  <div class="center">
+    <mat-spinner diameter="200" strokeWidth="20"></mat-spinner>
+  </div>
+</div>
+
 <mat-tab-group>
 
-<mat-tab label="lista de solicitudes">
-  <app-solicitud-list [solicitudes]="solicitudes"></app-solicitud-list>
-</mat-tab>
+  <mat-tab label="lista de solicitudes">
+    <app-solicitud-list [solicitudes]="filteredSolicitudes"></app-solicitud-list>
+  </mat-tab>
 
-<mat-tab label="para impresion">
-  <div id='printTarget'>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <mat-tab label="para impresion">
+    <div id='printTarget'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <div *ngFor="let solicitud of solicitudes">
+      <div *ngFor="let solicitud of filteredSolicitudes">
 
-      <app-solicitud [solicitud]="solicitud"></app-solicitud> 
+        <app-solicitud [solicitud]="solicitud"></app-solicitud> 
+
+      </div>
 
     </div>
-
-  </div>
-
 </mat-tab>  
 
 </mat-tab-group>

@@ -11,13 +11,16 @@ import { MaterialModule } from './material/material.module';
 import { ImportDataComponent } from './import-data/import-data.component';
 import { PrintTemplateComponent } from './print-template/print-template.component';
 import { SolicitudModule } from './solicitud/solicitud.module';
+import { FormsModule } from '@angular/forms';
+import { WarningAlertComponent } from './shared/warning-alert/warning-alert.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
     ImportDataComponent,
-    PrintTemplateComponent
+    PrintTemplateComponent,
+    WarningAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { SolicitudModule } from './solicitud/solicitud.module';
     LayoutModule,
     MaterialModule,
     HttpClientModule,
-    SolicitudModule
+    SolicitudModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

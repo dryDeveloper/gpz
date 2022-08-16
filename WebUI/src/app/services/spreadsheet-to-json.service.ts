@@ -28,6 +28,7 @@ export class SpreadsheetToJsonService {
         var first_sheet_name = workbook.SheetNames[0];
         var woorksheet = workbook.Sheets[first_sheet_name];
         var arraylist = XLSX.utils.sheet_to_json(woorksheet, { raw: true });
+        console.log(arraylist);
         this.filelist = arraylist;
         this.headers = Object.keys(this.filelist[0]);
         this.contents = this.filelist;

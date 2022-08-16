@@ -19,7 +19,7 @@ builder.Services.AddCors(opts => {
                         .AllowAnyMethod()
         );
     });
-
+builder.WebHost.UseUrls("https://localhost:7220", "http://localhost:5187");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

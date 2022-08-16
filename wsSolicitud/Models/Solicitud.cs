@@ -4,8 +4,12 @@ namespace wsSolicitud.Models {
 
   public class Solicitud {
 
+    private string folio = "";
     [Key]
-    public string Folio { get; set; } = "";
+    public string Folio { 
+      get => folio; 
+      set => folio = value.ToString(); 
+    } 
     public string TipoPersona { get; set; } = "";
     public string TipoProyecto { get; set; } = "";
     public string CP { get; set; } = "";
@@ -13,7 +17,6 @@ namespace wsSolicitud.Models {
     public string Ciudad { get; set; } = "";
     public string Colonia { get; set; } = "";
     public string Estado { get; set; } = "";
-    public string Entrecalle { get; set; } = "";
     public string FCaptura { get; set; } = "";
     public string Modalidad { get; set; } = "";
     public string Municipio { get; set; } = "";
@@ -39,6 +42,7 @@ namespace wsSolicitud.Models {
     public string RepPaterno { get; set; } = "";
     public string obsFV { get; set; } = "";
     public string obsTelcel { get; set; } = "";
+    public string Entrecalle { get; set; } = "";
   }
 
 }

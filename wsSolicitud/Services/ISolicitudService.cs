@@ -6,7 +6,7 @@ namespace wsSolicitud.Services {
 
     public Task<IEnumerable<Solicitud>> GetByDay(string dayOfCapture);
     public void Add(Solicitud[] Solicitudes);
-      
+    public IEnumerable<string> GetAll(); 
   }
     
 }
