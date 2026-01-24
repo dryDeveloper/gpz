@@ -14,7 +14,7 @@ namespace wsSolicitud.Controllers {
 
     public SolicitudController(ISolicitudService solicitudService) {
       this.solicitudService = solicitudService; 
-      this.response = new Response();
+      response = new();
     }
     
     public IActionResult GetAllFolios() {
@@ -66,10 +66,9 @@ namespace wsSolicitud.Controllers {
       }
 
       if (repeatedFolios.Count > 0) { 
-        filteredSolicitudes = Solicitudes
-                                    .Where(s => repeatedFolios
-                                      .All(f => s.Folio != f))
-                                    .ToList();
+        filteredSolicitudes = Solicitudes.Where(s => repeatedFolios
+                .All(f => s.Folio != f))
+                .ToList();
 
         if (filteredSolicitudes.Count == 0) {
           message.Append("0 nuevos folios fueron importados, porfavor revise que no este importando el mismo archivo...");

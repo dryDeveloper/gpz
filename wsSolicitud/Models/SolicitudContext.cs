@@ -8,7 +8,7 @@ public class SolicitudContext {
 
   public SolicitudContext(IConfiguration config) {
     this.config = config;
-    this.connectionString = this.config.GetConnectionString("MySql");
+    connectionString = this.config.GetConnectionString("MySql");
   }
 
   public IDbConnection CreateConnection() => new MySqlConnection(connectionString);
