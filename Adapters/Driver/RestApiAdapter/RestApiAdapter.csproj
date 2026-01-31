@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Driven\SqlAdapter\SqlAdapter.csproj" />
     <ProjectReference Include="..\..\..\Application\Orchestrator\Orchestrator.csproj" />
   </ItemGroup>
 

@@ -2,17 +2,18 @@ using Core.Models;
 
 namespace Core.Dtos;
 
-public class ValidUserDto(
+public record ValidUserDto(
     string UserName, 
-    UserProfile Profile,
+    string Password,
+    int Profile,
     string FirstName, 
     string LastName, 
     string Token
-) : User (
+) : UserDto (
     UserName,
     Profile,
     FirstName,
     LastName
 ) {
-    public string Token { get; set; } = Token;
+    // public string Token { get; set; } = Token;
 }

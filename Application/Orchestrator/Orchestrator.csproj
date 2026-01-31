@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Adapters\Driven\SqlAdapter\SqlAdapter.csproj" />
+    <ProjectReference Include="..\..\Adapters\Driven\AuthServiceAdapter\AuthServiceAdapter.csproj" />
   </ItemGroup>
 
 </Project>

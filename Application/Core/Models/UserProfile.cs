@@ -1,7 +1,7 @@
 namespace Core.Models;
 
 public enum UserProfile {
-    CallAgent,
+    SystemAdministrator = 1,
     Administrator,
-    SystemAdministrator
+    CallAgent
 }
