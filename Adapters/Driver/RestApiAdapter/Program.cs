@@ -7,16 +7,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.BootstrapApp();
 
-var app = builder.Build();
 
-app.MapUserEndpoints();
-app.MapProfileEndpoints();
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
+app.UseCors("gpz_policy");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapUserEndpoints();
+app.MapProfileEndpoints();
 
 app.Run();

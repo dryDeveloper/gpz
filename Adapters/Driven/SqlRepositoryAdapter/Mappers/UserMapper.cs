@@ -8,7 +8,7 @@ public static class UserMapper {
     public static ValidUserDto ToDto(this UserEntity entity, string token) => new (
         entity.Username,
         entity.Password,
-        entity.UserProfile.Id,
+        entity.UserProfileId,
         entity.Firstname,
         entity.Lastname,
         token
@@ -16,7 +16,7 @@ public static class UserMapper {
 
     public static UserDto ToDto(this UserEntity entity) => new (
         entity.Username,
-        entity.UserProfile.Id,
+        entity.UserProfileId,
         entity.Firstname,
         entity.Lastname
     );

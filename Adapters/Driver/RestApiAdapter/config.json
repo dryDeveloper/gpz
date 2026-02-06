@@ -1,5 +1,12 @@
 {
     "dbParams": {
         "conn": "Server=192.168.1.189,1433;Database=gpz;User ID=dev;Password=P@s$w0rD;TrustServerCertificate=True;"
+    },
+    "api": {
+        "jwt": {
+            "key": "ASS@VNjdavfnwi12039021349fjcv903vnds)1jf&^%%nakQIFNF192JDFNVBNpqignbnxmpqwioerhngj",
+            "issuer": "gpz.investigation.com",
+            "audience": "employees"
+        }
     }
 }

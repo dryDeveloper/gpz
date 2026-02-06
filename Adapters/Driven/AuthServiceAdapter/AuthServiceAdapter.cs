@@ -10,10 +10,13 @@ public class AuthServiceAdapter(IRepositoryPort<UserEntity> repo, IAuthToken tok
         
         // TODO: hash pwd
         var thePwd = pwd;
-        var user = (UserEntity) await repo.FilterAsync(u => u.Password == pwd && u.Username == usr);
+        var user = await repo.FilterAsync(u => u.Password == pwd && u.Username == usr);
 
-        if (user is not null)
-            return (true, user.ToDto(token.Generate()));
+        var validUser = user.FirstOrDefault();
+
+        if (validUser is not null)
+            return (true, token.Generate(validUser.ToDto()));
+        
 
         return (false, "invalid user or password");
     }
