@@ -4,8 +4,8 @@ import { AuthService } from '../services/auth-service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
-  let inMemoryToken = inject(AuthService).token();
-  let localToken = localStorage.getItem("token");
+  const inMemoryToken = inject(AuthService).token();
+  const localToken = localStorage.getItem("token");
 
   if (localToken && localToken != inMemoryToken)
     localStorage.setItem("token", inMemoryToken)
@@ -15,7 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
 
   const newReq = req.clone({
-    headers: req.headers.append('Authentication', "Bearer " + localToken)
+    headers: req.headers.append('Authorization', "Bearer " + inMemoryToken)
   });
 
   return next(newReq);

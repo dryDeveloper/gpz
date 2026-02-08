@@ -10,7 +10,7 @@ public class AddressEntity : Entity {
     public int AddressNumberEntityId { get; set; }
     public AddressNumberEntity? Number { get; set; }
 
-    public string? Colonia { get; set; }
+    public string? Colony { get; set; }
 
     public int? ClientCreditRequestEntityId { get; set; }
     public ClientCreditRequestEntity? ClientCreditRequestEntity { get; set; }

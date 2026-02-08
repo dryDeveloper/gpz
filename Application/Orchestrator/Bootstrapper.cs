@@ -55,7 +55,6 @@ public static class Bootstrapper {
             .AddScoped(typeof(IRepositoryPort<>), typeof(EntityRepository<>))
             .AddScoped<IUserRepository, UserRepository>()
             .AddScoped<IClientCreditRequestRepository, ClientCreditRequestRepository>()
-            // TODO: complete Jwt implementation
             .AddScoped<IAuthToken, JwtToken>()
             .AddScoped<IAuthServicePort, AuthServiceAdapter.AuthServiceAdapter>();
 

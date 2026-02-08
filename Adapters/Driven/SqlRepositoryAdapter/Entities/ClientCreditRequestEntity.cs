@@ -2,6 +2,7 @@ namespace SqlRepositoryAdapter.Entities;
 
 public class ClientCreditRequestEntity : Entity {
 
+    public int RequestNumber { get; set; }
     public int ProjectTypeEntityId { get; set; }
     public ProjectTypeEntity? ProjectType { get; set; }
 
@@ -17,8 +18,6 @@ public class ClientCreditRequestEntity : Entity {
     public DateTime DateOfAssigment { get; set; }
 
     public IEnumerable<AddressEntity>? Addresses { get; set; }
-
     public IEnumerable<PhoneNumberEntity>? PhoneNumbers { get; set; }
-
     public IEnumerable<PersonalReferenceEntity>? PersonalReferences { get; set; }
 }

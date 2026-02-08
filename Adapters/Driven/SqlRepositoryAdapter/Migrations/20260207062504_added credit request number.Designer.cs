@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlRepositoryAdapter;
 
@@ -11,9 +12,11 @@ using SqlRepositoryAdapter;
 namespace SqlRepositoryAdapter.Migrations
 {
     [DbContext(typeof(GpzDbCtx))]
-    partial class GpzDbCtxModelSnapshot : ModelSnapshot
+    [Migration("20260207062504_added credit request number")]
+    partial class addedcreditrequestnumber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
