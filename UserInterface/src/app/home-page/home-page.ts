@@ -18,19 +18,13 @@ export class HomePage implements OnInit {
   private authService = inject(AuthService);
   items: MenuItem[] | undefined;
   users = signal<User[]>([]);
-
-  constructor(private router: Router) {
-  }
+  private router = inject(Router);
 
   logOut(): void {
     localStorage.clear();
     this.authService.token.set("");
     this.router.navigate(['/login']);
   }
-
-  // private onUsersLoad() {
-  //   this.userService.GetUsers().subscribe(u => this.users.set(u));
-  // }
 
   ngOnInit(): void {
     this.items = [
@@ -39,10 +33,15 @@ export class HomePage implements OnInit {
         label: 'Credit Requests', icon: 'pi pi-book', items: [
           { label: 'Print', icon: 'pi pi-print', routerLink: ['/home/print'] },
           { label: 'Import', icon: 'pi pi-file-import', routerLink: ['/home/import'] },
-          { label: 'Search', icon: 'pi pi-search' },
+          // { label: 'Search', icon: 'pi pi-search' },
         ]
       },
-      { label: 'Contact', icon: 'pi pi-envelope' }
+      {
+        label: 'Users', icon: 'pi pi-user', items: [
+          { label: 'Add', icon: 'pi pi-user-plus', routerLink: ['/home/add-user'] },
+          { label: 'List', icon: 'pi pi-user', routerLink: ['/home/users'] }
+        ]
+      }
     ];
     this.router.navigate(['/home/stats']);
   }

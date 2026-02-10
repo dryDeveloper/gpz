@@ -71,8 +71,6 @@ public static class UserEndpoints {
                 return Results.BadRequest("no users were created, something bad happened...");
         });
 
-        group.MapGet("hello", () => "Hello im a testing endpoint");
-
         return group;
     }
 }

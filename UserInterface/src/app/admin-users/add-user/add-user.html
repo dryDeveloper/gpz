@@ -1,0 +1,22 @@
+<div class="card flex flex-wrap justify-center items-end gap-4">
+  <p-floatlabel variant="on">
+    <label for="user_name">User Name</label>
+    <input pInputText id="user_name" [(ngModel)]="new_user.Username" autocomplete="off" />
+  </p-floatlabel>
+  <p-floatlabel variant="on">
+    <label for="first_name">First Name</label>
+    <input pInputText id="first_name" [(ngModel)]="new_user.Firstname" autocomplete="off" />
+  </p-floatlabel>
+  <p-floatlabel variant="on">
+    <label for="last_name">Last Name</label>
+    <input pInputText id="last_name" [(ngModel)]="new_user.Lastname" autocomplete="off" />
+  </p-floatlabel>
+  <p-cascadeselect
+    [(ngModel)]="new_user.ProfileName"
+    [options]="profiles"
+    optionLabel="name"
+    [style]="{ minWidth: '14rem' }"
+    placeholder="Select Profile"
+  ></p-cascadeselect>
+  <p-button [loading]="loading()" (onClick)="onCreateUser()">Create</p-button>
+</div>

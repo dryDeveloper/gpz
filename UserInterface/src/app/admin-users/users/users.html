@@ -1,0 +1,28 @@
+<div class="card">
+    <p-table [value]="users()" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th>Profile</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Lastname</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-user>
+            <tr>
+                @if(user) {
+                  <td>{{ user.profileName }}</td>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                }
+                @else {
+                  <p-skeleton />
+                  <p-skeleton />
+                  <p-skeleton />
+                  <p-skeleton />
+                }
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
