@@ -11,10 +11,14 @@
     <label for="last_name">Last Name</label>
     <input pInputText id="last_name" [(ngModel)]="new_user.Lastname" autocomplete="off" />
   </p-floatlabel>
+  <p-floatlabel variant="on">
+    <label for="password">Password</label>
+    <input pInputText id="password" [(ngModel)]="new_user.Password" autocomplete="off" type="password"/>
+  </p-floatlabel>
   <p-cascadeselect
-    [(ngModel)]="new_user.ProfileName"
+    [(ngModel)]="selected_profile"
     [options]="profiles"
-    optionLabel="name"
+    optionLabel="description"
     [style]="{ minWidth: '14rem' }"
     placeholder="Select Profile"
   ></p-cascadeselect>

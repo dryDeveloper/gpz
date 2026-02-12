@@ -1,7 +1,7 @@
 interface User {
   Username: string,
-  ProfileId: number,
-  ProfileName: string,
+  Password: string,
   Firstname: string,
-  Lastname: string
+  Lastname: string,
+  Profile: number
 }

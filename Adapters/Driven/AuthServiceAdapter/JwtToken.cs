@@ -23,8 +23,6 @@ public class JwtToken(IConfigurationRoot cfg) : IAuthToken {
             new Claim(ClaimTypes.Name, user.UserName),
             new Claim(ClaimTypes.Role, "user")
         };
-        Console.WriteLine($"ISSUER: {apiCfg["jwt:issuer"]}");
-        Console.WriteLine($"AUDIENCE: {apiCfg["jwt:audience"]}");
         var token = new JwtSecurityToken(
             issuer: apiCfg["jwt:issuer"],
             audience: apiCfg["jwt:audience"],

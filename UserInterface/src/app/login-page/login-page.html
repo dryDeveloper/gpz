@@ -1,5 +1,6 @@
 <form #f="ngForm" (ngSubmit)="onLogin(f)" novalidate>
   <div class="card">
+    <p-toast/>
     <div class="flex flex-col md:flex-row">
       @if (invalidCreds()) {
         <p-message severity="error" icon="pi pi-times-circle" styleClass="mb-2">

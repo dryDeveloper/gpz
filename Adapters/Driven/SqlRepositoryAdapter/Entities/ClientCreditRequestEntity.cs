@@ -20,4 +20,5 @@ public class ClientCreditRequestEntity : Entity {
     public IEnumerable<AddressEntity>? Addresses { get; set; }
     public IEnumerable<PhoneNumberEntity>? PhoneNumbers { get; set; }
     public IEnumerable<PersonalReferenceEntity>? PersonalReferences { get; set; }
+
 }

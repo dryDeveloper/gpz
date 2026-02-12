@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { UserService } from '../../services/user-service';
+import { UserService } from '../../services/user/user-service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'add-user',
@@ -21,34 +22,43 @@ import { UserService } from '../../services/user-service';
 export class AddUser implements OnInit {
 
   profiles: any[] = [];
-  selected_profile: number = 0;
+  selected_profile: any;
   private userService = inject(UserService);
   loading = signal(false);
 
   new_user: User = {
     Username: "",
+    Password: "",
     Firstname: "",
     Lastname: "",
-    ProfileId: 0,
-    ProfileName: ""
+    Profile: 0
   };
 
   ngOnInit(): void {
+  // TODO: fetch profiles from backend
     this.profiles = [
-      { profile_id: 1, name: 'SysAdmin' },
-      { profile_id: 2, name: 'Admin' },
-      { profile_id: 3, name: 'Call Agent' }
+      { id: 1, description: 'SysAdmin' },
+      { id: 2, description: 'Admin' },
+      { id: 3, description: 'Call Agent' }
     ]
   }
 
-  onCreateUser() {
-    console.log(this.new_user);
+  onCreateUser(): void {
+    // console.log(this.selected_profile);
+    this.new_user.Profile = this.selected_profile.id;
+    // console.log(this.new_user);
     this.loading.set(true)
-    this.userService.CreateUser(this.new_user).subscribe(r => {
-      // TODO: return a flag to validate successfull creation of user in backend
-      // display user creation success message to user
-      this.loading.set(false);
-    });
+    this.userService.CreateUser(this.new_user)
+      .subscribe(r => {
+        // TODO: return a flag to validate successfull creation of user in backend
+        // display user creation success message to user
+        console.log(r);
+        this.loading.set(false);
+      },
+      (error)=> {
+        console.log(error);
+      });
   }
 
 }
+

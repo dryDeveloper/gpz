@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlRepositoryAdapter;
 
@@ -11,9 +12,11 @@ using SqlRepositoryAdapter;
 namespace SqlRepositoryAdapter.Migrations
 {
     [DbContext(typeof(GpzDbCtx))]
-    partial class GpzDbCtxModelSnapshot : ModelSnapshot
+    [Migration("20260210222128_updated user composed entity")]
+    partial class updatedusercomposedentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,8 +298,7 @@ namespace SqlRepositoryAdapter.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserProfileId")
-                        .IsUnique();
+                    b.HasIndex("UserProfileId");
 
                     b.ToTable("Users");
                 });
@@ -409,8 +411,8 @@ namespace SqlRepositoryAdapter.Migrations
             modelBuilder.Entity("SqlRepositoryAdapter.Entities.UserEntity", b =>
                 {
                     b.HasOne("SqlRepositoryAdapter.Entities.UserProfileEntity", "UserProfile")
-                        .WithOne("User")
-                        .HasForeignKey("SqlRepositoryAdapter.Entities.UserEntity", "UserProfileId")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -424,11 +426,6 @@ namespace SqlRepositoryAdapter.Migrations
                     b.Navigation("PersonalReferences");
 
                     b.Navigation("PhoneNumbers");
-                });
-
-            modelBuilder.Entity("SqlRepositoryAdapter.Entities.UserProfileEntity", b =>
-                {
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

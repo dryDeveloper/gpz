@@ -1,3 +1,4 @@
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SqlRepositoryAdapter.Entities;
@@ -20,6 +21,12 @@ public class GpzDbCtx : DbContext {
     public DbSet<ClientCreditRequestEntity> ClientCreditRequests { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
+
+        // modelBuilder.Entity<UserEntity>()
+            // .HasOne(u => u.UserProfile)
+            // .WithMany(u => u.User);
+            // .WithMany(p => p.User)
+        
 
         modelBuilder.Entity<ClientCreditRequestEntity>()
             .HasMany(e => e.Addresses)

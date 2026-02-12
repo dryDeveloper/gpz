@@ -5,7 +5,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterOutlet } from '@angular/router';
 import { TableModule } from 'primeng/table';
-import { AuthService } from '../services/auth-service';
+import { AuthService } from '../services/authentication/auth-service';
 
 @Component({
   selector: 'app-home-page',

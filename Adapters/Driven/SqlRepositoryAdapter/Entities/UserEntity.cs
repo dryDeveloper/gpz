@@ -11,6 +11,6 @@ public class UserEntity(string usr, string pwd, string first, string last, int p
     public int UserProfileId { get; set; } = profileId;
     public UserProfileEntity? UserProfile { get; set; } 
 
-    public UserEntity() : this("", "", "", "", -1) {}
+    public UserEntity() : this("", "", "", "", 3) {}
 
 }

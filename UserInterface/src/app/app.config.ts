@@ -6,13 +6,14 @@ import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth-interceptor';
-import { NgModel } from '@angular/forms';
+import { responseInterceptor } from './interceptors/response-interceptor';
+import { serverErrorInterceptor } from './interceptors/server-error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(
       withFetch(),
-      withInterceptors([authInterceptor])
+      withInterceptors([authInterceptor, serverErrorInterceptor])
     ),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -22,6 +23,6 @@ export const appConfig: ApplicationConfig = {
         preset: Aura
       },
       ripple: true
-    })
+    }),
   ]
 };

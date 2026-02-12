@@ -43,7 +43,8 @@ public static class UserEndpoints {
             if (profile is null)
                 return Results.BadRequest("Non existing profile id");
 
-            newUserEntity.UserProfile = profile.ToArray()[0];
+            // newUserEntity.UserProfile = profile.FirstOrDefault();
+            // newUserEntity.UserProfileId = newUserEntity.UserProfileId;
 
             await userRepo.CreateAsync(newUserEntity);
             var changes = await userRepo.CommitChanges();
