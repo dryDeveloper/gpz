@@ -11,7 +11,7 @@ public static class ProfileEndpoints {
 
         group.MapGet("/", async (IRepositoryPort<UserProfileEntity> repo) => {
             var entities = await repo.FilterAsync(e => true);
-            var dtos = entities.Select(e => new { e.Description });
+            var dtos = entities.Select(e => new { e.Id, e.Description });
             return Results.Ok(dtos);
         });
 

@@ -26,7 +26,7 @@ public static class UserEndpoints {
             var dtos = entities.Select(e => new {
                 e.Username,
                 ProfileId = e.UserProfileId,
-                ProfileName = e.UserProfile.Description,
+                ProfileName = e.UserProfile?.Description,
                 e.Firstname,
                 e.Lastname
             });
@@ -42,9 +42,6 @@ public static class UserEndpoints {
             var newUserEntity = dto.ToEntity();
             if (profile is null)
                 return Results.BadRequest("Non existing profile id");
-
-            // newUserEntity.UserProfile = profile.FirstOrDefault();
-            // newUserEntity.UserProfileId = newUserEntity.UserProfileId;
 
             await userRepo.CreateAsync(newUserEntity);
             var changes = await userRepo.CommitChanges();

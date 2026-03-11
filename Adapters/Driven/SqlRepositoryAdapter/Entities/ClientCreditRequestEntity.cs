@@ -21,4 +21,9 @@ public class ClientCreditRequestEntity : Entity {
     public IEnumerable<PhoneNumberEntity>? PhoneNumbers { get; set; }
     public IEnumerable<PersonalReferenceEntity>? PersonalReferences { get; set; }
 
+    public void Deconstruct(out int requestNumber, out DateTime captureDate) {
+        requestNumber = RequestNumber;
+        captureDate = CaptureDate;
+    }
+
 }

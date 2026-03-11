@@ -1,4 +1,3 @@
-using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SqlRepositoryAdapter.Entities;

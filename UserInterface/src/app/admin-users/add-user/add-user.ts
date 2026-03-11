@@ -6,6 +6,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { UserService } from '../../services/user/user-service';
 import { MessageService } from 'primeng/api';
+import { ProfileService } from '../../services/profile/profile-service.ts';
 
 @Component({
   selector: 'add-user',
@@ -21,43 +22,43 @@ import { MessageService } from 'primeng/api';
 })
 export class AddUser implements OnInit {
 
-  profiles: any[] = [];
-  selected_profile: any;
+  public profiles: any[] = [];
+  public selected_profile: any;
+  public loading = signal(false);
   private userService = inject(UserService);
-  loading = signal(false);
-
-  new_user: User = {
-    Username: "",
-    Password: "",
-    Firstname: "",
-    Lastname: "",
+  private profileService = inject(ProfileService);
+  private msgService = inject(MessageService);
+  public new_user: User = { Username: "", Password: "", Firstname: "", Lastname: "",
     Profile: 0
   };
 
-  ngOnInit(): void {
-  // TODO: fetch profiles from backend
-    this.profiles = [
-      { id: 1, description: 'SysAdmin' },
-      { id: 2, description: 'Admin' },
-      { id: 3, description: 'Call Agent' }
-    ]
+  public ngOnInit(): void {
+    this.profileService.GetProfiles().subscribe(p => this.profiles = p);
   }
 
-  onCreateUser(): void {
-    // console.log(this.selected_profile);
+  public onCreateUser(): void {
     this.new_user.Profile = this.selected_profile.id;
-    // console.log(this.new_user);
     this.loading.set(true)
-    this.userService.CreateUser(this.new_user)
-      .subscribe(r => {
-        // TODO: return a flag to validate successfull creation of user in backend
-        // display user creation success message to user
+    this.userService.CreateUser(this.new_user).subscribe({
+      next: r => {
         console.log(r);
-        this.loading.set(false);
       },
-      (error)=> {
-        console.log(error);
-      });
+      error: e => {
+        this.msgService.add({
+          severity: 'warn',
+          summary: 'Network Error',
+          detail: e
+        });
+      },
+      complete: () => {
+        this.loading.set(false);
+        this.msgService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'User Created'
+        });
+      }
+    });
   }
 
 }

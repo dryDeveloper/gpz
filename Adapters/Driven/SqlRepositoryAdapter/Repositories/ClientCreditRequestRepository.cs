@@ -12,4 +12,11 @@ public class ClientCreditRequestRepository(GpzDbCtx ctx) : EntityRepository<Clie
             .Include(c => c.PersonalReferences)
             .ToArrayAsync();
 
+    public async Task<IEnumerable<(int, DateTime)>> RequestNumberAndDate() {
+        var creditNoAndDate = await Ctx.ClientCreditRequests.ToArrayAsync();
+        var requestNo = 0;
+        var assignedOn = DateTime.Now;
+        return creditNoAndDate.Select(i => (requestNo, assignedOn) = i);
+        // return result;
+    }
 }

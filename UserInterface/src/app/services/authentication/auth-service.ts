@@ -12,7 +12,7 @@ export class AuthService {
 
   public Authenticate(usr: string, pwd: string) {
     return this.http.post<AuthResponse>(
-      "http://localhost:5039/users/login",
+      "https://localhost:7084/users/login",
       { "userName": usr, "password": pwd }
     );
   }

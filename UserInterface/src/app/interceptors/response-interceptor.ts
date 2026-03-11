@@ -1,21 +1,15 @@
-import { HttpErrorResponse, HttpEventType, HttpInterceptorFn, HttpStatusCode } from '@angular/common/http';
-import { catchError, EMPTY, tap } from 'rxjs';
+import { HttpErrorResponse, HttpEventType, HttpInterceptorFn, HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { tap } from 'rxjs';
 
 export const responseInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     tap(event => {
-      if (event.type === HttpEventType.Response && event.status === HttpStatusCode.Created) {
+      if (event instanceof HttpResponse && event.status === HttpStatusCode.Created) {
         // if (event.status === HttpStatusCode.Created)
-        console.log("resource created...");
-        return true;
+          // throw { code: 201, success: true };
         // return event.body;
       }
-      return event.type;
-    }),
-    catchError(error => {
-      if (error instanceof HttpErrorResponse) {
-        return EMPTY;
-      } else throw error;
-    }),
+      // throw { code: 100, success: true };
+    })
   );
 };

@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.BootstrapApp();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,5 +21,6 @@ app.UseAuthorization();
 
 app.MapUserEndpoints();
 app.MapProfileEndpoints();
+app.MapGet("tsl_test", () => "ssl works...");
 
 app.Run();

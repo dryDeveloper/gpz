@@ -1,5 +1,5 @@
 namespace Ports.Driven;
 
 public interface IAuthServicePort {
-    Task<(bool, object)> DoAuthAsync(string username, string password);
+    Task<(bool valid, object payload)> DoAuthAsync(string username, string password);
 }

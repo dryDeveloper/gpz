@@ -6,7 +6,7 @@ namespace AuthServiceAdapter;
 
 public class AuthServiceAdapter(IRepositoryPort<UserEntity> repo, IAuthToken token) : IAuthServicePort {
 
-    public async Task<(bool, object)> DoAuthAsync(string usr, string pwd) {
+    public async Task<(bool valid, object payload)> DoAuthAsync(string usr, string pwd) {
         
         // TODO: hash pwd
         var thePwd = pwd;
@@ -16,7 +16,6 @@ public class AuthServiceAdapter(IRepositoryPort<UserEntity> repo, IAuthToken tok
 
         if (validUser is not null)
             return (true, token.Generate(validUser.ToDto()));
-        
 
         return (false, "invalid user or password");
     }

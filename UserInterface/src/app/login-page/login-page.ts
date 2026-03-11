@@ -28,25 +28,34 @@ export class LoginPage {
 
   onLogin(f: NgForm): void {
     this.loading.set(true);
-    this.authService.Authenticate(f.value.username, f.value.password).subscribe(r => {
-      this.loading.set(false);
-      if (r.validCreds) {
-        localStorage.setItem("token", r.payload);
-        this.authService.token.set(r.payload);
-        this.router.navigate(['/home']);
-        this.invalidCreds.set(false);
-      }
-      else
-        this.invalidCreds.set(true);
-    }, (error) => {
+    this.authService.Authenticate(f.value.username, f.value.password).subscribe({
+      next: r => {
+        this.loading.set(false);
+        if (r.validCreds) {
+          localStorage.setItem("token", r.payload);
+          this.authService.token.set(r.payload);
+          this.router.navigate(['/home']);
+          this.invalidCreds.set(false);
+        }
+        else {
+          this.loading.set(false);
+          this.msgService.add({
+            severity: 'warn',
+            summary: 'Access Denied',
+            detail: 'Invalid username or password'
+          });
+        }
+      },
+      error: e => {
+        this.loading.set(false);
         this.msgService.add({
           severity: 'error',
-          summary: 'Network Error',
-          detail: 'Cannot reach server, please check your internet connection'
+          summary: 'Something bad happened',
+          detail: e
         });
-      console.log("there was an error");
-      console.error(error.message);
+      },
     });
+
   }
 
 }

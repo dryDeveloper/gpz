@@ -6,10 +6,18 @@ import { ButtonModule } from 'primeng/button';
 import { Router, RouterOutlet } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { AuthService } from '../services/authentication/auth-service';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-home-page',
-  imports: [MenubarModule, AvatarModule, ButtonModule, TableModule, RouterOutlet],
+  imports: [
+    MenubarModule,
+    AvatarModule,
+    ButtonModule,
+    TableModule,
+    RouterOutlet,
+    ToastModule
+  ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

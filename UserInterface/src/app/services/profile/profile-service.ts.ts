@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileServiceTs {
+export class ProfileService {
 
   private http = inject(HttpClient);
 
   public GetProfiles(): Observable<Profile[]> {
-    return this.http.get<Profile[]>("http://localhost:5039/profiles");
+    return this.http.get<Profile[]>("https://localhost:7084/profiles");
   }
 
 }
